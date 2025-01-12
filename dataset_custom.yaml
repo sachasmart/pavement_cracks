@@ -1,0 +1,6 @@
+train: ./data/train
+val: ./data/val   
+test: ./data/test  
+
+nc: 4
+names: ['0', '1', '2', '3']
