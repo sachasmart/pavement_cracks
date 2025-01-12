@@ -1,0 +1,72 @@
+led files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment directories
+env/
+venv/
+ENV/
+.VENV/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# Packaging and build directories
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Test coverage and test results
+htmlcov/
+*.cover
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.coveragerc
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# MyPy type checking
+.mypy_cache/
+
+# Pytest cache
+.pytest_cache/
+
+# Sphinx documentation
+docs/_build/
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+*.orig
+*.save
+
+# Secrets and sensitive files
+.env
+.env.*
+
+# Local `.gitignore` overrides
+.gitignore.local
+
+data/*
