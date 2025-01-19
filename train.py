@@ -1,17 +1,26 @@
-from ultralytics import YOLO
+from ultralytics import YOLO, settings
+import torchvision
+import wandb
+
+
+settings.update({"wandb": True})
+wandb.login()
+wandb.init(project="YOLO11n", name="pavement_cracks")
 
 model = YOLO("yolo11m.pt")
 
-model.train(
-    data="dataset_custom.yaml",
+results = model.train(
+    data="data.yaml",
     imgsz=640,
     batch=16,
     workers=8,
-    epochs=200,
+    epochs=175,
     device=0,
-    weights="yolo11m.pt",
     project="runs/train",
     name="exp",
-    entity="ultralytics",
     exist_ok=True,
+    cache=True,
+    plots=True,
 )
+
+wandb.finish()
