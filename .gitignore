@@ -69,4 +69,6 @@ docs/_build/
 # Local `.gitignore` overrides
 .gitignore.local
 
-data/*
+model/data/*
+**/events.out*
+**/*.secrets.yaml
