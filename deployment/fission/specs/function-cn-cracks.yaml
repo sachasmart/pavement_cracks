@@ -24,7 +24,8 @@ spec:
       namespace: ""
   podspec:
     containers:
-    - image: registry.sachasmart.com/pavement_cracks:latest
+    - image: registry.sachasmart.com/pavement_cracks:amd-latest
+      imagePullPolicy: Always # TODO: Remove when stable
       name: cracks
       ports:
       - containerPort: 8000
