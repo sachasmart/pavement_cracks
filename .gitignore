@@ -72,3 +72,4 @@ docs/_build/
 model/data/*
 **/events.out*
 **/*.secrets.yaml
+deployment/fast/runs/detect/
