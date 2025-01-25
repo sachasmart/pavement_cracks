@@ -10,7 +10,7 @@ wandb.init(project="YOLO11n", name="pavement_cracks")
 model = YOLO("yolo11m.pt")
 
 results = model.train(
-    data="general_detection.data.yaml",
+    data="data.general_detection.yaml",
     imgsz=640,
     batch=16,
     workers=8,
