@@ -25,7 +25,7 @@ spec:
   podspec:
     containers:
     - image: registry.sachasmart.com/pavement_cracks:amd-v3
-      imagePullPolicy: IfNotPresent # TODO: Remove when stable
+      imagePullPolicy: IfNotPresent
       name: cracks
       ports:
       - containerPort: 8000
