@@ -8,7 +8,7 @@ spec:
   InvokeStrategy:
     ExecutionStrategy:
       ExecutorType: container
-      MaxScale: 1
+      MaxScale: 5
       MinScale: 1
       SpecializationTimeout: 120
       TargetCPUPercent: 0
@@ -24,7 +24,7 @@ spec:
       namespace: ""
   podspec:
     containers:
-    - image: registry.sachasmart.com/pavement_cracks:amd-v3
+    - image: registry.sachasmart.com/pavement_cracks:amd-v4
       imagePullPolicy: IfNotPresent
       name: cracks
       ports:
