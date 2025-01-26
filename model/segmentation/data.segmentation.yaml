@@ -1,6 +1,6 @@
-train: ../data/segmentation/train/images
-val: ../data/segmentation/valid/images
-test: ../data/segmentation/test/images
+train: ../../data/segmentation/train/images
+val: ../../data/segmentation/valid/images
+test: ../../data/segmentation/test/images
 
 nc: 1
 names: ['crack']
