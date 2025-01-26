@@ -1,6 +1,7 @@
-train: ../../data/segmentation/train/images
-val: ../../data/segmentation/valid/images
-test: ../../data/segmentation/test/images
+path: /home/sacha/pavement_cracks/data/segmentation
+train: train/images
+val: valid/images
+test: test/images
 
 nc: 1
 names: ['crack']

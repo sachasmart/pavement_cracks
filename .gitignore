@@ -75,3 +75,6 @@ model/data/*
 deployment/fast/runs/detect/
 
 data/*
+*.pt
+
+!best.pt

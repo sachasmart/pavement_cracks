@@ -2,7 +2,7 @@ task: segment
 mode: train
 model: ./yolo11n-seg.pt
 data: data.segmentation.yaml
-epochs: 175
+epochs: 160
 time: null
 patience: 100
 batch: 16
