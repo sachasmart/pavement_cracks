@@ -30,7 +30,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends libgl1 libglib2.0-0
 
 COPY --from=builder $VENV_PATH $VENV_PATH
-COPY ./deployment/fast .
+COPY ./app/server .
 
 EXPOSE 8000
 
