@@ -5,7 +5,7 @@ import wandb
 
 settings.update({"wandb": True})
 wandb.login()
-wandb.init(project="YOLO11n", name="pavement_cracks")
+wandb.init(project="YOLO11m", name="pavement_cracks")
 
 model = YOLO("yolo11m.pt")
 
