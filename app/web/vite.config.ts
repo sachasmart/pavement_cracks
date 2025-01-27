@@ -3,16 +3,20 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
-
+const getAliasPath = (filepath: string) =>
+  fileURLToPath(new URL(`./src/${filepath}`, import.meta.url))
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    vueDevTools(),
-  ],
+  plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@assets': getAliasPath('assets'),
+      '@components': getAliasPath('components'),
+      '@plugins': getAliasPath('plugins'),
+      '@router': getAliasPath('router'),
+      '@services': getAliasPath('services'),
+      '@stores': getAliasPath('stores'),
+      '@views': getAliasPath('views'),
     },
   },
 })

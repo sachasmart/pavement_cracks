@@ -1,108 +1,42 @@
 <template>
-  <div id="viewer"></div>
+  <VApp class="app">
+    <RouterView v-if="!loadingApp" />
+    <LayoutStack v-else class="app__loader">
+      <VProgressCircular color="primary" indeterminate size="80" />
+    </LayoutStack>
+  </VApp>
 </template>
-
 <script setup lang="ts">
-import { ref, onMounted, type Ref } from 'vue'
-import { Viewer, utils } from '@photo-sphere-viewer/core'
-import { AutorotatePlugin } from '@photo-sphere-viewer/autorotate-plugin'
-
-const psViewer: Ref<Viewer | null> = ref(null)
-let isInit = true
-
-const animatedValues = {
-  pitch: { start: -Math.PI / 2, end: 0 },
-  yaw: { start: Math.PI / 2, end: 0 },
-  zoom: { start: 0, end: 50 },
-  maxFov: { start: 130, end: 90 },
-  fisheye: { start: 2, end: 0 },
-}
-
-const onloadImg = () => {
-  psViewer.value = new Viewer({
-    container: document.querySelector('#viewer'),
-    panorama: 'http://192.168.2.5:9000/test/stereo.jpg',
-    defaultPitch: animatedValues.pitch.start,
-    defaultYaw: animatedValues.yaw.start,
-    defaultZoomLvl: animatedValues.zoom.start,
-    maxFov: animatedValues.maxFov.start,
-    fisheye: animatedValues.fisheye.start,
-    plugins: [
-      [
-        AutorotatePlugin,
-        {
-          autostartDelay: null,
-          autostartOnIdle: false,
-          autorotatePitch: 0,
-        },
-      ],
-    ],
-  })
-
-  const autorotate = psViewer.value.getPlugin(AutorotatePlugin) // Access plugin after initializing psViewer
-
-  psViewer.value.addEventListener('click', ({ data }) => {
-    if (isInit) {
-      intro(data.pitch, data.yaw, autorotate)
-    }
-  })
-
-  psViewer.value.addEventListener(
-    'ready',
-    () => {
-      psViewer.value!.navbar.hide()
-
-      setTimeout(() => {
-        if (isInit) {
-          intro(animatedValues.pitch.end, animatedValues.yaw.end, autorotate)
-        }
-      }, 5000)
-    },
-    { once: true },
-  )
-}
+import { onMounted, ref } from 'vue'
+/**
+ * Whether app data is loading (authentication, etc)
+ *
+ * NOTE: Must start 'true' to avoid double mounting components!
+ * NOTE: Should only be changed after any potential route validation redirects have happened, to ensure
+ *         the `RouterView` (and corresponding component) is not mounted with for invalid routes!
+ */
+const loadingApp = ref(true)
 
 onMounted(async () => {
-  onloadImg()
+  loadingApp.value = true
 })
-
-const intro = (pitch, yaw, autorotate) => {
-  isInit = false
-  autorotate.stop()
-  psViewer.value!.navbar.hide()
-
-  new utils.Animation({
-    properties: {
-      ...animatedValues,
-      pitch: { start: animatedValues.pitch.start, end: pitch },
-      yaw: { start: animatedValues.yaw.start, end: yaw },
-    },
-    duration: 2500,
-    easing: 'inOutQuad',
-    onTick: (properties) => {
-      psViewer.value!.setOptions({
-        fisheye: properties.fisheye,
-        maxFov: properties.maxFov,
-      })
-      psViewer.value!.rotate({ yaw: properties.yaw, pitch: properties.pitch })
-      psViewer.value!.zoom(properties.zoom)
-    },
-  }).then(() => {
-    autorotate.start()
-    psViewer.value!.navbar.show()
-    psViewer.value!.setOptions({
-      mousemove: true,
-      mousewheel: true,
-    })
-  })
-}
 </script>
 
-<style scoped>
-@import 'https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core@5/index.css';
+<style lang="scss">
+.v-btn {
+  border-radius: 2px !important;
+}
+</style>
 
-#viewer {
-  width: 100vh;
-  height: 50vh;
+<style lang="scss" scoped>
+.app {
+  flex-grow: 1;
+  min-height: 100vh;
+}
+
+.app__loader {
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
 }
 </style>
