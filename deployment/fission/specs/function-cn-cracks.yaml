@@ -24,13 +24,16 @@ spec:
       namespace: ""
   podspec:
     containers:
-    - image: registry.sachasmart.com/pavement_cracks:amd-v4
+    - image: registry.sachasmart.com/pavement_cracks:amd-v4 # TODO
       imagePullPolicy: IfNotPresent
       name: cracks
       ports:
       - containerPort: 8000
         name: http-env
       resources: {}
+      env:
+      - name: ENV
+        value: "debug"
     imagePullSecrets:
       - name: registry-secret
     terminationGracePeriodSeconds: 0
