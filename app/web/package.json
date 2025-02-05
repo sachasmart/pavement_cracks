@@ -14,11 +14,15 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
+    "@mdi/js": "^7.4.47",
     "@photo-sphere-viewer/autorotate-plugin": "^5.11.5",
     "@photo-sphere-viewer/core": "^5.11.5",
     "pinia": "^2.3.1",
     "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "vue-router": "^4.5.0",
+    "vuetify": "^3.7.11",
+    "vite-plugin-vuetify": "^2.1.0"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",

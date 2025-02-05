@@ -1,13 +1,16 @@
 <template>
   <VApp class="app">
-    <RouterView v-if="!loadingApp" />
-    <LayoutStack v-else class="app__loader">
-      <VProgressCircular color="primary" indeterminate size="80" />
-    </LayoutStack>
+    <!-- <RouterView v-if="!loadingApp" /> -->
+    <div class="pa-4">
+      <ThisPavementCracks />
+      <div class="my-4" />
+      <VCard> About section here </VCard>
+    </div>
   </VApp>
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import { ThisPavementCracks } from './views'
 /**
  * Whether app data is loading (authentication, etc)
  *
@@ -26,9 +29,7 @@ onMounted(async () => {
 .v-btn {
   border-radius: 2px !important;
 }
-</style>
 
-<style lang="scss" scoped>
 .app {
   flex-grow: 1;
   min-height: 100vh;
@@ -38,5 +39,11 @@ onMounted(async () => {
   flex-grow: 1;
   align-items: center;
   justify-content: center;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 </style>

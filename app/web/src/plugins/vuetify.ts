@@ -1,32 +1,26 @@
-import "vuetify/styles";
-import {createVuetify} from "vuetify";
-import {md3} from "vuetify/blueprints";
-import {aliases, mdi} from "vuetify/iconsets/mdi-svg";
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import { md3 } from 'vuetify/blueprints'
+import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 
 export const lightTheme = {
   dark: false,
   colors: {
-    background: "#ffffff",
-    surface: "#ffffff",
-    primary: "#212121",
-    secondary: "#424242",
-    accent: "#EFC606",
-    accentDarker: "#826C02",
-    success: "#009688",
-    grey: "#616161",
-    error: "#FF5252",
-    info: "#2196F3",
-    infoLight: "#BBDEFB",
-    infoLighter: "#E3F2FD",
-    warning: "#FFC107",
-    // Colour Palette
-    colourPalette0: "#2196F3",
-    colourPalette1: "#DC143C",
-    colourPalette2: "#FF4500",
-    colourPalette3: "#FFA500",
-    colourPalette4: "#FFD700",
+    background: '#ffffff',
+    surface: '#ffffff',
+    primary: '#212121',
+    secondary: '#424242',
+    accent: '#EFC606',
+    accentDarker: '#826C02',
+    success: '#009688',
+    grey: '#616161',
+    error: '#FF5252',
+    info: '#2196F3',
+    infoLight: '#BBDEFB',
+    infoLighter: '#E3F2FD',
+    warning: '#FFC107',
   },
-};
+}
 
 export default createVuetify({
   blueprint: md3,
@@ -34,41 +28,41 @@ export default createVuetify({
   defaults: {
     VAlert: {
       border: true,
-      variant: "tonal",
+      variant: 'tonal',
     },
     VCheckbox: {
-      color: "primary",
+      color: 'primary',
       persistentHint: true,
     },
     VChip: {
-      rounded: "pill",
+      rounded: 'pill',
     },
     VPagination: {
-      density: "compact",
+      density: 'compact',
       totalVisible: 5,
     },
     VProgressCircular: {
-      color: "primary",
+      color: 'primary',
     },
     VSelect: {
-      color: "primary",
+      color: 'primary',
       persistentHint: true,
     },
     VSwitch: {
-      color: "primary",
+      color: 'primary',
       inset: true,
       persistentHint: true,
-      style: "--v-input-control-height: unset;",
+      style: '--v-input-control-height: unset;',
     },
     VTextField: {
-      color: "primary",
+      color: 'primary',
       persistentHint: true,
-      variant: "outlined",
+      variant: 'outlined',
     },
     VTextarea: {
-      color: "primary",
+      color: 'primary',
       persistentHint: true,
-      variant: "outlined",
+      variant: 'outlined',
     },
     VCard: {
       elevation: 0,
@@ -76,12 +70,12 @@ export default createVuetify({
     VBtn: {
       rounded: false,
       //@ts-ignore
-      style: ({props}) => ({
-        cursor: props.disabled ? "not-allowed" : "pointer",
+      style: ({ props }) => ({
+        cursor: props.disabled ? 'not-allowed' : 'pointer',
       }),
     },
     VTooltip: {
-      location: "top",
+      location: 'top',
     },
     VImg: {
       transition: false,
@@ -93,28 +87,28 @@ export default createVuetify({
       appear: true,
     },
     VFadeTransition: {
-      mode: "out-in",
+      mode: 'out-in',
       hideOnLeave: true,
     },
     VAutocomplete: {
-      density: "compact",
-      variant: "outlined",
+      density: 'compact',
+      variant: 'outlined',
     },
   },
   display: {
-    mobileBreakpoint: "md",
+    mobileBreakpoint: 'md',
   },
   icons: {
-    defaultSet: "mdi",
+    defaultSet: 'mdi',
     aliases,
     sets: {
       mdi,
     },
   },
   theme: {
-    defaultTheme: "light",
+    defaultTheme: 'light',
     themes: {
       light: lightTheme,
     },
   },
-});
+})
