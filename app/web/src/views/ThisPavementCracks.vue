@@ -58,6 +58,7 @@ const handleUpload = () => {
   if (uploadFileValue?.type != 'file') {
     return
   }
+  console.log('uploadFileValue', uploadFileValue)
 
   mutate({
     file: uploadFileValue.file,
