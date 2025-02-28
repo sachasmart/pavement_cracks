@@ -1,0 +1,28 @@
+apiVersion: fission.io/v1
+kind: HTTPTrigger
+metadata:
+  creationTimestamp: "2025-02-27T03:10:24Z"
+  generation: 1
+  name: cracks
+  namespace: default
+  resourceVersion: "298489541"
+  uid: bb94fd08-15f9-494f-95e1-a3b0069eba9b
+spec:
+  createingress: false
+  functionref:
+    functionweights: null
+    name: cracks
+    type: name
+  host: ""
+  ingressconfig:
+    annotations: null
+    host: '*'
+    path: /cracks
+    tls: ""
+  method: ""
+  methods:
+  - GET
+  - POST
+  - OPTIONS
+  prefix: ""
+  relativeurl: /cracks

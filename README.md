@@ -3,10 +3,14 @@
 ## Dataset
 
 ### General Detection
+
 - [Download](https://figshare.com/articles/dataset/Pavement_cracks_from_UAV_imagery-1388/25103138?file=44293022)
+
 ### Segmentation
+
 - [Download](https://universe.roboflow.com/university-bswxt/crack-bphdr?ref=ultralytics)
- - [Documentation](https://docs.ultralytics.com/datasets/segment/crack-seg/#how-do-i-train-a-model-using-the-crack-segmentation-dataset-with-ultralytics-yolo11)
+- [Documentation](https://docs.ultralytics.com/datasets/segment/crack-seg/#how-do-i-train-a-model-using-the-crack-segmentation-dataset-with-ultralytics-yolo11)
+
 ## Development
 
 ```bash
