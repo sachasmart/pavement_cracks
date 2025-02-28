@@ -3,9 +3,13 @@
     <VCard>
       <VCardTitle>
         <TextTitle variant>Upload Pavement Cracks</TextTitle>
+        <!-- Iscomplete: {{ isComplete }}
+        <br />
+        isPending: {{ isPending }} -->
       </VCardTitle>
       <VCardText>
         <FileUpload
+          v-if="!isComplete"
           name="pavementCracks"
           :data="uploadFile"
           @add:file="handleAddFile"
@@ -15,6 +19,13 @@
             <VProgressCircular :model-value="progress" />
           </template>
         </FileUpload>
+        <VImg v-if="isComplete" src="https://faas.sachasmart.com/cracks?filename=IMG_2048.jpg">
+          <template v-slot:placeholder>
+            <div class="d-flex justify-center align-center" style="height: 100%">
+              <VProgressCircular indeterminate />
+            </div>
+          </template>
+        </VImg>
       </VCardText>
       <VCardActions class="align-self-center">
         <VBtn
@@ -32,7 +43,7 @@
       </VCardActions>
     </VCard>
     <VDivider class="my-4 mx-2" />
-    <TextBody> About section here </TextBody>
+    <TextBody> TODO: About section here </TextBody>
   </VCard>
 </template>
 <script lang="ts" setup>
@@ -43,7 +54,7 @@ import { useFileUploadForProject } from '@queries/file.queries'
 import { ref, type Ref } from 'vue'
 
 const uploadFile: Ref<ImportFileType | null> = ref(null)
-const { mutate, progress, isPending, isError, reset } = useFileUploadForProject()
+const { mutate, progress, isPending, isComplete, isError, reset } = useFileUploadForProject()
 
 const removeFile = () => {
   reset()

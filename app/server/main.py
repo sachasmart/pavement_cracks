@@ -78,7 +78,7 @@ async def main(request: Request, file: UploadFile | None = File(None)):
         response = DetectResponse(
             message="Detection completed",
             detections=detections,
-            result_image=f"/results/{file.filename}",
+            result_image=f"/cracks?filename={file.filename}",
         )
 
         debug_log(f"Response: {response}")

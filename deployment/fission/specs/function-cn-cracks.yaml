@@ -9,7 +9,7 @@ spec:
     ExecutionStrategy:
       ExecutorType: container
       MaxScale: 5
-      MinScale: 1
+      MinScale: 0
       SpecializationTimeout: 120
       TargetCPUPercent: 0
     StrategyType: execution
