@@ -11,6 +11,23 @@ export default defineConfig(({ mode }) => {
   const envConfig = loadEnv(mode, process.cwd())
 
   return {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData(source: string, fp: string) {
+            if (fp.includes('vuetify')) {
+              return source
+            }
+
+            return `
+              @use "@styles/_breakpoints.scss" as *;
+              @use "@styles/_functions.scss" as *;
+              ${source}
+            `
+          },
+        },
+      },
+    },
     plugins: [vue(), vuetify({ autoImport: true })],
     resolve: {
       alias: {
@@ -21,6 +38,9 @@ export default defineConfig(({ mode }) => {
         '@services': getAliasPath('services'),
         '@stores': getAliasPath('stores'),
         '@views': getAliasPath('views'),
+        '@queries': getAliasPath('queries'),
+        '@styles': getAliasPath('styles'),
+        '@config': getAliasPath('config.ts'),
       },
     },
     server: {

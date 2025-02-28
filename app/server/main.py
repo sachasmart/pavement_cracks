@@ -1,5 +1,6 @@
 from fastapi import Body, FastAPI, Request, UploadFile, File, HTTPException
 from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 from models.detect import Detection, DetectResponse
 import os
@@ -7,6 +8,18 @@ from ultralytics import YOLO
 import cv2
 
 app = FastAPI()
+
+origins = os.environ.get(
+    "ALLOWED_ORIGINS", "http://localhost,http://localhost:3000"
+).split(",")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 model = YOLO("best.pt")
 names = model.model.names
@@ -26,8 +39,6 @@ def debug_log(message: str):
 @app.api_route("/", methods=["GET", "POST"])
 async def main(request: Request, file: UploadFile | None = File(None)):
     debug_log(f"Request method: {request.method}")
-    if env == "dev" or env == "debug":
-        debug_log(f"Request body: {await request.body()}")
 
     if request.method == "POST":
         if file is None:

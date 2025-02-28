@@ -45,7 +45,7 @@
       />
 
       <template v-if="data.type === 'file'">
-        <VImg class="w-100 contain h-100" :src="data.fileUrl" />
+        <VImg class="w-100 h-100" contain :src="data.fileUrl" />
       </template>
       <template v-else>
         <VImg class="w-100 h-100" contain :src="data.url" />

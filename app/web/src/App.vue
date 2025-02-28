@@ -1,11 +1,7 @@
 <template>
   <VApp class="app">
     <!-- <RouterView v-if="!loadingApp" /> -->
-    <div class="pa-4">
-      <ThisPavementCracks />
-      <div class="my-4" />
-      <VCard> About section here </VCard>
-    </div>
+    <ThisPavementCracks />
   </VApp>
 </template>
 <script setup lang="ts">
@@ -41,9 +37,13 @@ onMounted(async () => {
   justify-content: center;
 }
 
+body {
+  background-color: white;
+}
 #app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: white;
 }
 </style>

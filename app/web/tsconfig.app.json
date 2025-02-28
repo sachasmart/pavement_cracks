@@ -37,8 +37,7 @@
       "@typings/*": ["src/types/*"],
       "@utilities/*": ["src/utilities/*"],
       "@views/*": ["src/views/*"],
-      "@queries/*": ["src/queries/*"],
-      "@workers/*": ["src/workers/*"]
+      "@queries/*": ["src/queries/*"]
     }
   }
 }
