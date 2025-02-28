@@ -8,7 +8,7 @@ spec:
   InvokeStrategy:
     ExecutionStrategy:
       ExecutorType: container
-      MaxScale: 1
+      MaxScale: 5
       MinScale: 1
       SpecializationTimeout: 120
       TargetCPUPercent: 0
@@ -24,13 +24,18 @@ spec:
       namespace: ""
   podspec:
     containers:
-    - image: registry.sachasmart.com/pavement_cracks:amd-v3
+    - image: registry.sachasmart.com/pavement_cracks:amd-v7 # TODO
       imagePullPolicy: IfNotPresent
       name: cracks
       ports:
       - containerPort: 8000
         name: http-env
       resources: {}
+      env:
+      # - name: ENV
+      #   value: "debug"
+      - name: ALLOWED_ORIGINS
+        value: "*"
     imagePullSecrets:
       - name: registry-secret
     terminationGracePeriodSeconds: 0

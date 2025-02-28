@@ -78,3 +78,5 @@ data/*
 *.pt
 
 !best.pt
+
+app/node_modules/

@@ -24,13 +24,15 @@ COPY ./pyproject.toml ./poetry.lock ./
 
 RUN poetry install --no-dev --no-interaction
 
-FROM base AS final
+FROM base AS installer
 
 WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends libgl1 libglib2.0-0
 
+FROM installer AS final
+
 COPY --from=builder $VENV_PATH $VENV_PATH
-COPY ./deployment/fast .
+COPY ./app/server .
 
 EXPOSE 8000
 

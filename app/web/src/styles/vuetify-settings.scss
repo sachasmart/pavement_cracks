@@ -1,0 +1,11 @@
+// NOTE: Avoid putting any styles in this file, as it is included with all SCSS files!!!
+
+// Must unquote font-family declarations to avoid SASS to CSS quoting issues
+@use "sass:string";
+@use "sass:map";
+
+@use 'vuetify/settings' with (
+  $body-font-family: string.unquote("'Mulish', sans-serif"),
+  $button-text-transform: none,
+  $heading-font-family: string.unquote("'Mulish', sans-serif'"),
+);
