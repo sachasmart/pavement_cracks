@@ -3,6 +3,15 @@
     <VCard>
       <VCardTitle>
         <TextTitle variant>Upload Pavement Cracks</TextTitle>
+        <VTooltip text="Not Guaranteed">
+          <template #activator="{ props: healthProps }">
+            <VImg
+              width="50px"
+              v-bind="healthProps"
+              src="https://uptime.sachasmart.com/api/v1/endpoints/external-projects_pavement-cracks/health/badge.svg"
+            />
+          </template>
+        </VTooltip>
       </VCardTitle>
       <VCardText>
         <FileUpload
@@ -40,16 +49,16 @@
       </VCardActions>
     </VCard>
     <VDivider class="my-4 mx-2" />
-    <TextBody> TODO: {{ ABOUT }} </TextBody>
+    <ThisAbout />
   </VCard>
 </template>
 <script lang="ts" setup>
 import { FileUpload } from '@components/form'
-import { TextTitle, TextBody } from '@components/typography'
+import { TextTitle } from '@components/typography'
 import type { ImportFileType } from '@components/form/FileUpload.vue'
 import { useFileUploadForProject } from '@queries/file.queries'
 import { ref, type Ref, computed } from 'vue'
-import { ABOUT } from './constants/about.ts'
+import { ThisAbout } from '.'
 import config from '@config'
 
 const base_url = config.api.url
