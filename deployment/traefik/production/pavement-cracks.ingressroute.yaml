@@ -1,0 +1,18 @@
+kind: IngressRoute
+apiVersion: traefik.containo.us/v1alpha1
+metadata:
+  name: production-frontend-ingress
+  namespace: pavement-cracks
+  annotations:
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`pavement-cracks.sachasmart.com`)
+      kind: Rule
+      services:
+        - name: pavement-cracks-web-service
+          port: 80
+  tls:
+    secretName: sachasmart-com-production-tls

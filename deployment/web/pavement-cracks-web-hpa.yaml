@@ -1,0 +1,31 @@
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: pavement-cracks-web-hpa
+  namespace: terraform-security
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: pavement-cracks-web-service
+  minReplicas: 1
+  maxReplicas: 3
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 90
+  # - type: Object
+  #   object:
+  #     metric:
+  #       name: requests-per-second
+  #     describedObject:
+  #       apiVersion: networking.k8s.io/v1
+  #       kind: Ingress
+  #       name: main-route
+  #     target:
+  #       type: Value
+  #       value: 1k

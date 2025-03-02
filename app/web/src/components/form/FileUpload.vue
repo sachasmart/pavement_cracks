@@ -12,11 +12,11 @@
       @drop="onDrop"
     >
       <div class="d-flex flex-column align-center justify-center pa-6">
-        <VIcon alt="Add Image Icon" class="mb-4" :icon="mdiFileImagePlus" max-width="100" />
+        <VIcon alt="Add Image Icon" class="mb-4" :icon="mdiCamera" max-width="100" />
         <p class="text-sm grey--text text--darken-1 mb-2">
           <span class="font-weight-bold orange--text">Click to upload</span> or drag and drop
         </p>
-        <p class="text-xs grey--text text--darken-2">PNG, JPG, GIF, TIF up to {{ maxSize }}MB</p>
+        <p class="text-xs grey--text text--darken-2">PNG, JPG, up to {{ maxSize }}MB</p>
       </div>
       <input
         :id="name"
@@ -62,7 +62,7 @@
 </template>
 
 <script lang="ts" setup>
-import { mdiClose, mdiFileImagePlus } from '@mdi/js'
+import { mdiClose, mdiCamera } from '@mdi/js'
 import { ref } from 'vue'
 
 export type ImportFileType =
@@ -73,7 +73,6 @@ export type ImportFileType =
 type FileUploadProps = {
   disabled?: boolean
   name: string
-  /** max size of the file in MB */
   maxSize?: number
   accept?: string
   data: ImportFileType
@@ -82,7 +81,7 @@ const ONE_MB_IN_BYTES = 1048576
 
 const props = withDefaults(defineProps<FileUploadProps>(), {
   maxSize: 10,
-  accept: '.jpg, .gif, .png, .tif, .jpeg',
+  accept: '.jpg, .png, .jpeg',
 })
 
 const emit = defineEmits<{
@@ -105,7 +104,7 @@ const onFileChanged = (event: Event) => {
   const target = event.target as HTMLInputElement
   const file: File = (target.files as FileList)[0]
   if (target) {
-    target.value = '' //To allow uploading same file
+    target.value = ''
   }
   if (file) {
     addFile(file)

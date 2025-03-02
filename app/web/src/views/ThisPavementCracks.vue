@@ -3,9 +3,6 @@
     <VCard>
       <VCardTitle>
         <TextTitle variant>Upload Pavement Cracks</TextTitle>
-        <!-- Iscomplete: {{ isComplete }}
-        <br />
-        isPending: {{ isPending }} -->
       </VCardTitle>
       <VCardText>
         <FileUpload
@@ -19,7 +16,7 @@
             <VProgressCircular :model-value="progress" />
           </template>
         </FileUpload>
-        <VImg v-if="isComplete" src="https://faas.sachasmart.com/cracks?filename=IMG_2048.jpg">
+        <VImg v-if="isComplete" :src="resultUrl">
           <template v-slot:placeholder>
             <div class="d-flex justify-center align-center" style="height: 100%">
               <VProgressCircular indeterminate />
@@ -43,7 +40,7 @@
       </VCardActions>
     </VCard>
     <VDivider class="my-4 mx-2" />
-    <TextBody> TODO: About section here </TextBody>
+    <TextBody> TODO: {{ ABOUT }} </TextBody>
   </VCard>
 </template>
 <script lang="ts" setup>
@@ -51,10 +48,13 @@ import { FileUpload } from '@components/form'
 import { TextTitle, TextBody } from '@components/typography'
 import type { ImportFileType } from '@components/form/FileUpload.vue'
 import { useFileUploadForProject } from '@queries/file.queries'
-import { ref, type Ref } from 'vue'
+import { ref, type Ref, computed } from 'vue'
+import { ABOUT } from './constants/about.ts'
+import config from '@config'
 
+const base_url = config.api.url
 const uploadFile: Ref<ImportFileType | null> = ref(null)
-const { mutate, progress, isPending, isComplete, isError, reset } = useFileUploadForProject()
+const { mutate, progress, isPending, isComplete, isError, resultImage } = useFileUploadForProject()
 
 const removeFile = () => {
   reset()
@@ -69,11 +69,12 @@ const handleUpload = () => {
   if (uploadFileValue?.type != 'file') {
     return
   }
-  console.log('uploadFileValue', uploadFileValue)
 
   mutate({
     file: uploadFileValue.file,
     fileName: uploadFileValue.fileName,
   })
 }
+
+const resultUrl = computed(() => (resultImage.value ? `${base_url}/${resultImage.value}` : ''))
 </script>

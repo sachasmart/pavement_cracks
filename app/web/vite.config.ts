@@ -41,6 +41,7 @@ export default defineConfig(({ mode }) => {
         '@queries': getAliasPath('queries'),
         '@styles': getAliasPath('styles'),
         '@config': getAliasPath('config.ts'),
+        '@typings': getAliasPath('typings'),
       },
     },
     server: {
