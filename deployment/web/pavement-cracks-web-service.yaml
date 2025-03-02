@@ -1,0 +1,24 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: pavement-cracks-web-service
+  labels:
+    app: pavement-cracks-web-service
+  namespace: pavement-cracks
+spec:
+  selector:
+    app: pavement-cracks-web-service
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+    - name: metrics
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - name: scraper
+      protocol: TCP
+      port: 9113
+      targetPort: 9113
