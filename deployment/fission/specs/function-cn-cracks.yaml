@@ -24,7 +24,7 @@ spec:
       namespace: ""
   podspec:
     containers:
-    - image: registry.sachasmart.com/pavement_cracks:amd-v10 # TODO
+    - image: registry.sachasmart.com/pavement_cracks:amd-v10
       imagePullPolicy: IfNotPresent
       name: cracks
       ports:
@@ -35,7 +35,7 @@ spec:
       - name: ENV
         value: "debug"
       - name: ALLOWED_ORIGINS
-        value: "*"
+        value: "https://pavement-cracks.sachasmart.com"
     imagePullSecrets:
       - name: registry-secret
     terminationGracePeriodSeconds: 0
